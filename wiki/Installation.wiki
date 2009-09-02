@@ -1,0 +1,10 @@
+#summary Wie die Klasse installiert wird
+#labels Phase-Deploy,Phase-Support
+
+(Details folgen noch...)
+
+= Temporäre Installation =
+
+= Private Installation =
+
+= Lokale Installation =

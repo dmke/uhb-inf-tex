@@ -59,7 +59,7 @@
 % die ueblichen Verdaechtigen
 \RequirePackage[ngerman]{babel}
 \RequirePackage[T1]{fontenc}
-\RequirePackage{graphicx,calc,amsmath,amssymb,textcomp,verbatim,xcolor}
+\RequirePackage{graphicx,calc,amsmath,amssymb,textcomp,verbatim}
 
 % wenn gewuenscht, schoene oder normale Fonts verwenden, ansonsten PDF moeglichst klein halten
 \ifopt{nicefonts}{

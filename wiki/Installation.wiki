@@ -32,6 +32,7 @@ einzubinden mag dieses Problem zwar zu beseitigen, allerdings wird LaTeX dann me
 
 (kommt noch)
   * http://www.tex.ac.uk/cgi-bin/texfaq2html?label=privinst
+  * http://www.tex.ac.uk/cgi-bin/texfaq2html?label=install-where
 
 
 == Lokale Installation ==

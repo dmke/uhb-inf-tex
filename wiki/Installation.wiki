@@ -1,10 +1,39 @@
 #summary Wie die Klasse installiert wird
 #labels Phase-Deploy,Phase-Support
 
-(Details folgen noch...)
+= Überblick =
 
-= Temporäre Installation =
+(La)TeX erlaubt es, Dateien an verschiedenen Orten zu installieren. Das mag verwirrend sein, macht aber auf den zweiten Blick Sinn, wenn man weiß, dass eine Hierarchie vorgibt, in welcher Reihenfolge diese Verzeichnisse abgearbeitet werden.
 
-= Private Installation =
+Beim Kompilieren der TeX-Dateien werden fehlende Dateien nacheinander in dieser Folge gesucht:
 
-= Lokale Installation =
+  # im selben Verzeichnis, wie die zu kompilierende TeX-Datei
+  # im privaten TeX-Baum
+  # im lokalen TeX-Baum
+  # im globalen TeX-Baum
+
+Der Begriff "TeX-Baum" meint hier bestimmte Verzeichnisstrukturen, siehe dazu die [http://www.tex.ac.uk/cgi-bin/texfaq2html?label=tds TeX UK FAQ]. Im Folgenden soll die Installation an genannten Orten beschrieben werden.
+
+== Temporäre Installation ==
+
+Die einfachste Methode, die `uhb-inf-tex.cls` einzusetzen, ist das Kopieren dieser Datei in das Verzeichnis, in welchem auch die zu kompilierende TeX-Datei liegt.
+
+Dies ist die einfachste Methode, bedarf aber ständiges Kopieren der Dokumentenklasse. Die Idee, die CLS-Datei einfach eine Verzeichnis-Ebene über den TeX-Dateien zu legen, und sie mit
+
+{{{
+\documentclass{../uhb-inf-tex}
+}}}
+
+einzubinden mag dieses Problem zwar zu beseitigen, allerdings wird LaTeX dann meckern, dass der Angegebene Klassenname `../uhb-inf-tex` nicht mit der Bezeichnung der Klasse selbst (eben `uhb-inf-tex`) übereinstimmt.
+
+== Private Installation ==
+
+(kommt noch)
+
+== Lokale Installation ==
+
+(kommt noch)
+
+== Globale Installation ==
+
+Von eine globalen Installation ist generell abzuraten, da man hier mehr kaputt machen kann, als dass es einen Zugewinn gibt. In meinen Augen ist die TeX-Installation selbst ein recht fragiles Ding, das man lieber nicht anfassen sollte ;-)

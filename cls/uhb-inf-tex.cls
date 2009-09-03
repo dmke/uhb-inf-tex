@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fb3tex}[2009/08/25 v1.0 Uni-Bremen Studiclass]
+\ProvidesClass{fb3tex}[2009/09/03 v1.0.1 Uni-Bremen Studiclass]
 
 % Optionen abfangen.
 \RequirePackage{ifthen}
@@ -39,13 +39,13 @@
 	\RequirePackage[utf8]{inputenc}
 }{
 	\ifopt{unix}{
-		\RequirePackage[latin15]{inputenc}
+		\RequirePackage[latin1]{inputenc}
 	}{
 		\ifopt{mac}{
 			\RequirePackage[applemac]{inputenc}
 		}{
 			\ifopt{win}{
-				\RequirePackage[latin1]{inputenc}
+				\RequirePackage[ansinew]{inputenc}
 			}{
 				\ClassWarningNoLine{fb3tex}{%
 					Bitte daran denken, eine eigene Eingabe-Kodierung\space%
@@ -100,8 +100,8 @@
 	\fi
 }
 \fancyfoot[RO,LE]{\small\thepage}
-\def\headrulewidth{\ifnum\value{page}>1 .01667em\else0pt\fi}
-\def\footrulewidth{0pt}
+\renewcommand\headrulewidth{\ifnum\value{page}>1 .01667em\else0pt\fi}
+\renewcommand\footrulewidth{0pt}
 
 % Listen enger packen
 \RequirePackage{enumitem}
@@ -150,20 +150,20 @@
 }
 
 % Praesentation der Ueberschriften anpassen
-\def\thesection{Aufgabe \arabic{section}}
+\renewcommand\thesection{Aufgabe \arabic{section}}
 \renewcommand\section{%
 	\@startsection{section}{1}{0em}%
-	{\baselineskip}{.5\baselineskip}{\Large\bfseries\sffamily}
+	{\baselineskip}{.5\baselineskip}{\Large\bfseries\sffamily}%
 }
-\def\thesubsection{(\arabic{section}.\alph{subsection})}
+\renewcommand\thesubsection{(\arabic{section}.\alph{subsection})}
 \renewcommand\subsection{%
 	\@startsection{subsection}{2}{0em}%
-	{\baselineskip}{.5\baselineskip}{\large\bfseries\sffamily}
+	{\baselineskip}{.5\baselineskip}{\large\bfseries\sffamily}%
 }
-\def\thesubsubsection{(\arabic{section}.\alph{subsection}.\arabic{subsubsection})}
+\renewcommand\thesubsubsection{(\arabic{section}.\alph{subsection}.\arabic{subsubsection})}
 \renewcommand\subsubsection{%
 	\@startsection{subsubsection}{3}{0em}%
-	{\baselineskip}{.5\baselineskip}{\normalsize\bfseries\sffamily}
+	{\baselineskip}{.5\baselineskip}{\normalsize\bfseries\sffamily}%
 }
 
 \renewcommand\maketitle{

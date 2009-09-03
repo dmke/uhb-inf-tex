@@ -1,12 +1,11 @@
 \documentclass[nicefonts,nogruppe,nosemester,noveranstaltung,notutor,noabgabe,utf]{uhb-inf-tex}
-\usepackage{pi1,url,wrapfig}
+\usepackage{url,wrapfig}
 
-\beschreibung{\texttt{\LARGE uhb-inf-tex \normalsize v1.0-2009/08/31}}
-\zettel{}{04.11.2009}
-\gruppe{4}{Dominik Menke, \url{dmke@tzi.de}}
-\tutor{Shi Hui}
+\beschreibung{\texttt{\LARGE uhb-inf-tex \normalsize v1.0.1-2009/09/03}}
+\zettel{}{}
+\gruppe{}{Dominik Menke, \url{dmke@tzi.de}}
 
-\def\thesection{\arabic{section}}
+\renewcommand\thesection{\arabic{section}}
 
 \begin{document}
 
@@ -32,7 +31,6 @@ Wer dennoch ein Minimalsystem sein eigen nennt, muss wenigstens diese \LaTeX-Pak
 
 \begin{itemize}
 	\item \texttt{amssymb} -- siehe \url{http://tug.ctan.org/tex-archive/fonts/amsfonts/latex} und \url{http://www.ams.org/tex/amsfonts.html}
-	\item \texttt{xcolor} -- siehe \url{http://tug.ctan.org/tex-archive/macros/latex/contrib/xcolor} und \url{http://www.ukern.de/tex/xcolor.html}
 	\item \texttt{geometry} -- siehe \url{http://tug.ctan.org/cgi-bin/ctanPackageInformation.py?id=geometry}
 	\item \texttt{listings} -- siehe \url{http://tug.ctan.org/cgi-bin/ctanPackageInformation.py?id=listings}
 	\item \texttt{fancyhdr} -- siehe \url{http://tug.ctan.org/cgi-bin/ctanPackageInformation.py?id=fancyhdr}
@@ -140,12 +138,6 @@ Einige Dinge, die noch auf der Todo-Liste stehen sind:
 	\item Haskell für PI3-Vorlagen einbinden
 	\item Hinweise für \LaTeX-Anfänger hinzufügen?
 	\item Pakete für verschiedene Kurse anlegen (siehe Beispiel \texttt{PI1.cls})
-\end{itemize}
-
-Leider gibt es auch einen seltsamen Bug, den ich noch nicht verstanden habe:
-
-\begin{itemize}
-	\item Die unnummerierten Sternchen-Versionen der Überschriften funktionieren nicht.
 \end{itemize}
 
 \end{document}

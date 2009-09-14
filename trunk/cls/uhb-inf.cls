@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fb3tex}[2009/09/03 v1.0.1 Uni-Bremen Studiclass]
+\ProvidesClass{uhb-inf}[2009/09/15 v1.1 Uni-Bremen Studiclass]
 
 % Optionen abfangen.
 \RequirePackage{ifthen}
@@ -148,6 +148,13 @@
 	\gdef\@veranstaltungkurz{#1}
 	\gdef\@veranstaltung{#2}
 }
+
+% Defaultwerte vordefinieren
+\semester{}
+\tutor{}
+\zettel{}{}
+\gruppe{}{}
+\veranstaltung{}{}
 
 % Praesentation der Ueberschriften anpassen
 \renewcommand\thesection{Aufgabe \arabic{section}}

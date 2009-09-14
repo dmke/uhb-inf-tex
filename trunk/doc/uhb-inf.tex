@@ -1,7 +1,7 @@
-\documentclass[nicefonts,nogruppe,nosemester,noveranstaltung,notutor,noabgabe,utf]{uhb-inf-tex}
+\documentclass[nicefonts,nogruppe,nosemester,noveranstaltung,notutor,noabgabe,utf]{uhb-inf}
 \usepackage{url,wrapfig}
 
-\beschreibung{\texttt{\LARGE uhb-inf-tex \normalsize v1.0.1-2009/09/03}}
+\beschreibung{\texttt{\LARGE uhb-inf \normalsize v1.1-2009/09/15}}
 \zettel{}{}
 \gruppe{}{Dominik Menke, \url{dmke@tzi.de}}
 
@@ -17,7 +17,7 @@
 
 \section{Klassen- und Paketbeschreibung}
 
-Die Klasse \texttt{uhb-inf-tex.cls} stellt die Weiterentwicklung der Klasse \texttt{pi1.cls} dar, die wiederum eine von Thomas Röfer adaptierte Version aus \texttt{pi1-muster.cls} und \texttt{defs.tex} war. Nachdem ich mich nun zwei Jahre intensiv mit \LaTeX\ beschäftigt habe, habe ich mir mal die Mühe gemacht einige Dinge auszumerzen, die man so (nicht) mehr macht,\footnote{\url{http://www.ctan.org/tex-archive/info/l2tabu/}} oder anders besser lösen kann. Da mir allerdings die \texttt{pi1.cls} eine große Hilfe beim Lernen von \LaTeX\ war, denke ich ist es nur konsequent, diese Verbesserungen auch an die Erstsemester weiter zu geben.
+Die Klasse \texttt{uhb-inf.cls} stellt die Weiterentwicklung der Klasse \texttt{pi1.cls} dar, die wiederum eine von Thomas Röfer adaptierte Version aus \texttt{pi1-muster.cls} und \texttt{defs.tex} war. Nachdem ich mich nun zwei Jahre intensiv mit \LaTeX\ beschäftigt habe, habe ich mir mal die Mühe gemacht einige Dinge auszumerzen, die man so (nicht) mehr macht,\footnote{\url{http://www.ctan.org/tex-archive/info/l2tabu/}} oder anders besser lösen kann. Da mir allerdings die \texttt{pi1.cls} eine große Hilfe beim Lernen von \LaTeX\ war, denke ich ist es nur konsequent, diese Verbesserungen auch an die Erstsemester weiter zu geben.
 
 Herausgekommen ist dabei eine gut anpassbare Dokumentklasse, die sich nicht nur für PI\,1--3, sondern auch für Mathe/Theo/etc. einsetzen lässt.
 
@@ -61,7 +61,7 @@ Wie man die einzelnen Pakete nachinstalliert ist sowohl betriebssystem- als auch
 Zur schnellen Anpassung gibt es eine Reihe von Optionen, die in der Form
 
 \begin{verbatim}
-    \documentclass[option-1,...,option-n]{uhb-inf-tex}
+    \documentclass[option-1,...,option-n]{uhb-inf}
 \end{verbatim}
 
 angegeben werden können. Einige sind obligatorisch, ein Fehlen wird durch eine Warnung beim Kompilervorgang bekannt gegeben.
@@ -94,7 +94,7 @@ Die bei diesem Dokument aktiven Optionen lauten:
         nicefonts,
         nogruppe,nosemester,noveranstaltung,notutor,noabgabe,
         utf
-    ]{uhb-inf-tex}
+    ]{uhb-inf}
 \end{verbatim}
 
 \subsection{Befehle und Umgebungen}
@@ -128,6 +128,10 @@ Daneben gibt es die Umgebung \texttt{Java}, welche Java-Quellcode nicht nur wied
 \end{lstlisting}
 
 Für die Java-Umgebung ist noch zusätzlich \texttt{language=Java} gesetzt.
+
+\subsection{Minimalbeispiele}
+
+Im Repository finden sich unter \texttt{trunk/doc/minimalbeispiele} zwei kleine Beispiele, einmal ein Pseudo-Aufgabenzettel und einmal eine dazugehörige Abgabe.
 
 \subsection{Ausblick}
 

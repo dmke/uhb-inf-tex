@@ -1,18 +1,22 @@
-\documentclass[utf,compactfonts]{uhb-inf-tex}
-% uhb-inf-tex.cls dorthin kopieren, wo latex sie finden kann
-\usepackage{pi1}
+\documentclass[utf,compactfonts]{uhb-inf}
+% uhb-inf.cls dorthin kopieren, wo latex sie finden kann
+
 \usepackage{blindtext}
 
-\gruppe{dmke}{Dominik Menke}
+\veranstaltung{PI1}{Praktische Informatik 1}
+\semester{WS2009/10}
 \tutor{niemand}
+\gruppe{dmke}{Dominik Menke}
 \zettel{1}{04.11.2009}
 
 \begin{document}
 
 \section{Foo}
 \blindtext[1]
+
 \subsection{bar}
 \blindtext[1]
+
 \begin{Java}
 	public class HalloWelt {
 		public static final void main(String[] args) {
@@ -23,6 +27,7 @@
 
 \subsection{baz}
 \blinditemize
+
 \blindtext[1]
 
 \end{document}

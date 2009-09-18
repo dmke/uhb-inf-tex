@@ -1,0 +1,51 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{pi3}[2009/08/31 v1.0 Uni-Bremen PI3]
+
+\veranstaltung{PI3}{Praktische Informatik 3}
+\semester{WS2009/10}
+
+\def\thismodule{\jobname}
+
+\renewcommand\include[1]{
+	\gdef\thismodule{#1}%
+	\input{#1.lhs}%
+}
+
+\lstdefinelanguage[Core]{Haskell}{
+	otherkeywords={=>},
+	morekeywords={case,class,data,default,deriving,do,else,%
+		if,import,in,infix,infixl,infixr,instance,let,module,%
+		newtype,of,then,type,where},
+	sensitive,
+	morecomment=[l]--,
+	morecomment=[n]{\{-}{-\}},
+	morestring=[b]"
+}[keywords,comments,strings]
+
+\lstnewenvironment{code}{%
+	\lstset{name=\thismodule,firstnumber=auto}%
+	\csname\@lst @SetFirstNumber\endcsname%
+}{%
+	\csname\@lst @SaveFirstNumber\endcsname%
+}
+
+\lstset{
+	basicstyle=\footnotesize\ttfamily,
+	commentstyle=\footnotesize\rmfamily,
+	language=[Core]Haskell,
+	flexiblecolumns=false,
+	basewidth={0.5em,0.45em},
+	numbers=left,
+	numberstyle=\tiny\sffamily,
+	tabsize=4,
+	xleftmargin=30pt,
+	breaklines=true
+	literate={+}{{$+$}}1 {/}{{$/$}}1 {*}{{$*$}}1 {=}{{$=$}}1
+		{>}{{$>$}}1 {<}{{$<$}}1 {\\\ }{{$\lambda$}}1
+		{\\\\}{{\char`\\\char`\\}}1
+		{->}{{$\rightarrow$}}2 {>=}{{$\geq$}}2 {<-}{{$\leftarrow$}}2
+		{<=}{{$\leq$}}2 {=>}{{$\Rightarrow$}}2
+		{...}{{\ldots}}1 {(.)}{{($\circ$)}}2 {\ .\ }{{$\circ$}}2
+		{>>}{{>>}}2 {>>=}{{>>=}}2
+		{|}{{$\mid$}}1 {::}{{${::}$}}2
+}

@@ -1,0 +1,36 @@
+\documentclass[utf]{uhb-inf}
+\usepackage{pi3}
+
+
+%% Daten der Uebungsgruppe (am besten in der Datei pi3.sty ablegen,
+%% und mit \usepackage{pi3} immer wieder einbinden):
+
+% Name des Tutors:
+\tutor{Joe Totalle}
+% Nummer der Übungsgruppe und Teilnehmer (mit '\\' getrennt):
+\gruppe{1}{Alice \\ Bob \\ Claire \\ Dan}
+% Nummer des Blattes und Abgabe-Datum
+\zettel{1}{17.11.2008}
+
+\begin{document}
+
+\section{Ein erstes Haskell-Programm}
+
+% Der \include-Befehl wurde so modifiziert, dass man auch andere
+% Module einbinden kann. Hier ein Beispiel, welches das Modul
+% "Aufgabe9" (in Datei "Aufgabe9.lhs") einbindet:
+\include{Aufgabe9}
+% Um die Zeilennummerierung nicht durcheinanderzubringen, sollte
+% Haskell-Code nur in \include'ten Dateien enthalten sein.
+
+\section{Literate Haskell}
+
+% Hier wird ein weiteres Modul eingebunden:
+\include{Aufgabe10}
+
+\section{Ende gut, alles gut\ldots}
+
+Wollen wir doch hoffen.
+
+\end{document}
+

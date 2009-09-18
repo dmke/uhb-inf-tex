@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{uhb-inf}[2009/09/15 v1.1 Uni-Bremen Studiclass]
+\ProvidesClass{uhb-inf}[2009/09/18 v1.2 Uni-Bremen Studiclass]
 
 % Optionen abfangen.
 \RequirePackage{ifthen}
@@ -16,17 +16,17 @@
 \opt@bool{unix}
 
 % einige Variablen nicht anzeigen
-\opt@bool{notutor}
-\opt@bool{nogruppe}
-\opt@bool{noabgabe}
-\opt@bool{nosemester}
-\opt@bool{nobeschreibung}
-\opt@bool{noveranstaltung}
+\opt@bool{tutor-aus}
+\opt@bool{gruppe-aus}
+\opt@bool{abgabe-aus}
+\opt@bool{semester-aus}
+\opt@bool{beschreibung-aus}
+\opt@bool{veranstaltung-aus}
 
 % verschiedenes
-\opt@bool{aufgabenstellung}
-\opt@bool{nicefonts}
-\opt@bool{compactfonts}
+\opt@bool{aufgabenblatt}
+\opt@bool{palatino}
+\opt@bool{times}
 \ProcessOptions\relax
 
 \LoadClass[10pt,a4paper,twoside]{article}
@@ -62,23 +62,24 @@
 \RequirePackage{graphicx,calc,amsmath,amssymb,textcomp,verbatim}
 
 % wenn gewuenscht, schoene oder normale Fonts verwenden, ansonsten PDF moeglichst klein halten
-\ifopt{nicefonts}{
+\ifopt{palatino}{
 	\RequirePackage[scaled]{beramono}% Bera Mono (monospace)
 	\RequirePackage[sc]{mathpazo}% Palatino (serif)
 }{
-	\ifopt{compactfonts}{
+	\ifopt{times}{
 		\RequirePackage{mathptmx,helvet,courier}% Times, Hevetica und Courier
 	}{
-		\ClassWarningNoLine{fb3tex}{Das Verwenden normaler Fonts verhindert das Hervorheben von Quellcodes.}
+		%\ClassWarningNoLine{fb3tex}{Das Verwenden normaler Fonts verhindert das Hervorheben von Quellcodes.}
 		\RequirePackage{lmodern}% optisch mit Computer Modern identisch, aber besser
 	}
 }
 % Inline-Typewriter-Font ein bisschen verkleinern und Silbentrennung aktivieren
-\let\@uhb@tt\texttt
-\def\texttt#1{\@uhb@tt{\small #1}}
-
 \let\@uhb@ttfamily\ttfamily
-\def\ttfamily{\@uhb@ttfamily \hyphenchar\font=`\- \small}
+\def\ttfamily{%
+	\@uhb@ttfamily%
+	\hyphenchar\font=`\-%
+	\footnotesize%
+}
 
 % Basislayout aendern
 \RequirePackage[top=25mm,bottom=25mm,inner=20mm,outer=40mm]{geometry}
@@ -93,10 +94,10 @@
 \fancyhead{
 	\ifnum\value{page}>1%
 		\small\sffamily\strut%
-		\ifopt{noveranstaltung}{}{\@veranstaltungkurz}\hfill%
-		\ifopt{nosemester}{}{\@semester}\hfill
-		\ifopt{nogruppe}{}{\textbf{Gruppe~\@gruppe}}\hfill%
-		\ifopt{notutor}{}{Tutor~\@tutor}
+		\ifopt{veranstaltung-aus}{}{\@veranstaltungkurz}\hfill%
+		\ifopt{semester-aus}{}{\@semester}\hfill
+		\ifopt{gruppe-aus}{}{\textbf{Gruppe~\@gruppe}}\hfill%
+		\ifopt{tutor-aus}{}{\@tutorhead}
 	\fi
 }
 \fancyfoot[RO,LE]{\small\thepage}
@@ -125,13 +126,20 @@
 %% BEFEHLE
 
 \def\beschreibung#1{\title{#1}\gdef\@beschreibung{#1}}
-\ifopt{aufgabenstellung}
+\ifopt{aufgabenblatt}
 	{\beschreibung{Aufgabenblatt}}
 	{\beschreibung{\"Ubungszettel}}
 
-% Semester und Tutor
+% Semester und Tutor/Tutorin
 \def\semester#1{\gdef\@semester{#1}}% WS09/10
-\def\tutor#1{\gdef\@tutor{#1}}
+\def\tutor#1{
+	\gdef\@tutorhead{Tutor~#1}
+	\gdef\@tutortitle{\textbf{Tutor} \> #1}
+}
+\def\tutorin#1{
+	\gdef\@tutorhead{Tutorin~#1}
+	\gdef\@tutortitle{\textbf{Tutorin} \> #1}
+}
 
 % Zettelnummer/Abgabedatum
 \def\zettel#1#2{
@@ -175,27 +183,27 @@
 
 \renewcommand\maketitle{
 	\begin{minipage}{.6\linewidth}
-		\ifopt{nosemester}{}{\sffamily\@semester\\}
-		\ifopt{noveranstaltung}{}{
+		\ifopt{semester-aus}{}{\sffamily\@semester\\}
+		\ifopt{veranstaltung-aus}{}{
 			\begin{huge}
 				\bfseries \@veranstaltung
 				\vskip.5\baselineskip
 			\end{huge}
 		}
-		\ifopt{nobeschreibung}{}{
+		\ifopt{beschreibung-aus}{}{
 			\begin{large}
 				\bfseries\@beschreibung~\@zettel
 				\vskip.5\baselineskip
 			\end{large}
 		}
-		\ifopt{noabgabe}{}{Abgabe: \@abgabe}
+		\ifopt{abgabe-aus}{}{Abgabe: \@abgabe}
 	\end{minipage}\hfill%
 	\begin{minipage}{.4\linewidth}
 		\sffamily
 		\begin{tabbing}
 			********** \= \kill
-			\ifopt{notutor}{}{\textbf{Tutor} \> \@tutor \\}
-			\ifopt{nogruppe}{}{\textbf{Gruppe} \> \@gruppe \\[1ex]}
+			\ifopt{tutor-aus}{}{\@tutortitle \\}
+			\ifopt{gruppe-aus}{}{\textbf{Gruppe} \> \@gruppe \\[1ex]}
 			\@teilnehmer
 		\end{tabbing}
 	\end{minipage}\par

@@ -1,19 +1,17 @@
-\documentclass[nicefonts,nogruppe,nosemester,noveranstaltung,notutor,noabgabe,utf]{uhb-inf}
+\documentclass[palatino,gruppe-aus,semester-aus,veranstaltung-aus,abgabe-aus,tutor-aus,utf]{uhb-inf}
 \usepackage{url,wrapfig}
 
-\beschreibung{\texttt{\LARGE uhb-inf \normalsize v1.1-2009/09/15}}
+\beschreibung{\texttt{\LARGE uhb-inf \normalsize v1.2-2009/09/18}}
 \zettel{}{}
 \gruppe{}{Dominik Menke, \url{dmke@tzi.de}}
 
 \renewcommand\thesection{\arabic{section}}
+\def\option#1{\texttt{\bfseries #1}}
+\def\cs#1{\char`\\#1}
+\def\p#1{$\langle$\textit{#1}$\rangle$}
+\def\pb#1{\{\p{#1}\}}
 
 \begin{document}
-
-\begin{wrapfigure}[17]{r}{.35\linewidth}
-	\setlength\fboxsep{0pt}
-	\setlength\fboxrule{.01667em}
-	\fbox{\includegraphics[width=\linewidth]{resources/blindtext.pdf}}
-\end{wrapfigure}
 
 \section{Klassen- und Paketbeschreibung}
 
@@ -29,29 +27,29 @@ Es empfiehlt sich immer, ein komplettes und aktuelles \TeX-System zur Verfügung
 
 Wer dennoch ein Minimalsystem sein eigen nennt, muss wenigstens diese \LaTeX-Pakete installiert haben:
 
-\begin{itemize}
-	\item \texttt{amssymb} -- siehe \url{http://tug.ctan.org/tex-archive/fonts/amsfonts/latex} und \url{http://www.ams.org/tex/amsfonts.html}
-	\item \texttt{geometry} -- siehe \url{http://tug.ctan.org/cgi-bin/ctanPackageInformation.py?id=geometry}
-	\item \texttt{listings} -- siehe \url{http://tug.ctan.org/cgi-bin/ctanPackageInformation.py?id=listings}
-	\item \texttt{fancyhdr} -- siehe \url{http://tug.ctan.org/cgi-bin/ctanPackageInformation.py?id=fancyhdr}
-	\item \texttt{enumitem} -- siehe \url{http://tug.ctan.org/cgi-bin/ctanPackageInformation.py?id=enumitem}
-	\item Fonts \texttt{mathpazo} und \texttt{beramono}
-	\item oder Fonts \texttt{mathptmx}, \texttt{helvet} und \texttt{courier}
-	\item oder Font \texttt{lmodern}
+\begin{itemize}[noitemsep]
+	\item \option{amssymb}\footnote{\url{http://tug.ctan.org/tex-archive/fonts/amsfonts/latex}},\footnote{\url{http://www.ams.org/tex/amsfonts.html}}
+	\item \option{geometry}\footnote{\url{http://tug.ctan.org/cgi-bin/ctanPackageInformation.py?id=geometry}}
+	\item \option{listings}\footnote{\url{http://tug.ctan.org/cgi-bin/ctanPackageInformation.py?id=listings}}
+	\item \option{fancyhdr}\footnote{\url{http://tug.ctan.org/cgi-bin/ctanPackageInformation.py?id=fancyhdr}}
+	\item \option{enumitem}\footnote{\url{http://tug.ctan.org/cgi-bin/ctanPackageInformation.py?id=enumitem}}
+	\item Fonts \option{mathpazo} und \option{beramono}
+	\item oder Fonts \option{mathptmx}, \option{helvet} und \option{courier}
+	\item oder Font \option{lmodern}
 \end{itemize}
 
 Daneben werden diese Standardpakete eingebunden (die sowieso immer eingebunden werden sollten):
 
-\begin{itemize}
-	\item \texttt{ifthen},
-	\item \texttt{inputenc} mit passender Kodierung (siehe unten),
-	\item \texttt{babel} mit neuer deutscher Rechtschreibung,
-	\item \texttt{fontenc},
-	\item \texttt{graphicx},
-	\item \texttt{calc},
-	\item \texttt{amsmath},
-	\item \texttt{textcomp},
-	\item \texttt{verbatim}
+\begin{itemize}[noitemsep]
+	\item \option{ifthen},
+	\item \option{inputenc} mit passender Kodierung (siehe unten),
+	\item \option{babel} mit neuer deutscher Rechtschreibung,
+	\item \option{fontenc},
+	\item \option{graphicx},
+	\item \option{calc},
+	\item \option{amsmath},
+	\item \option{textcomp},
+	\item \option{verbatim}
 \end{itemize}
 
 Wie man die einzelnen Pakete nachinstalliert ist sowohl betriebssystem- als auch \TeX"=distributionsspezifisch. Ist ein komplettes \TeX-System eingerichtet, sind die erforderlichen Pakete ebenfalls dabei\dots
@@ -66,33 +64,45 @@ Zur schnellen Anpassung gibt es eine Reihe von Optionen, die in der Form
 
 angegeben werden können. Einige sind obligatorisch, ein Fehlen wird durch eine Warnung beim Kompilervorgang bekannt gegeben.
 
-\begin{description}
-	\item[Eingabekodierung] Zur Wahl stehen \texttt{utf}, \texttt{mac}, \texttt{win} und \texttt{unix}, die entsprechende Zeichenkodierungen (utf8, applemac, latin15 bzw. latin1) nachladen. Wird keine dieser Optionen angegeben, erscheint der Hinweis, dass man eine eigene Eingabekodierung angeben sollte. Es gibt hier also keinen Default-Wert.
-	\item[Schriften] Es stehen drei Schrift-Theman zur Auswahl:
-	\begin{enumerate}
-		\item Das klassische \LaTeX-Erscheinungsbild mit "`Computer Modern"'-Fonts, bzw. der verbesserten Variante "`Latin Modern"'. Hierzu ist keine Option nötig.
-		\item Eine modernere Variante mit Palatino als Brotschrift und Bera Mono als dicktengleiche Schrift für den Quelltext (wie in diesem Dokument). Hierzu gibt es die Option \texttt{nicefonts}.
-		\item Als letztes gibt es noch ein "`sparsames"' Thema, das native PDF-Schriften verwendet und so die Dateigröße der PDF signifikant verkleinert. Allerdings sind die mit \texttt{compactfonts} eingestellten Schriften (Helvetica, Times und Courier) nicht sonderlich schön.
-	\end{enumerate}
-	\item[Anzeige verschiedener Variablen] Wie später noch gezeigt wird, lassen sich einige definierte Variablen entfernen. Im einzelnen sind dies:
-	\begin{itemize}
-		\item \texttt{notutor} -- unterbindet die Ausgabe des Tutors im Titel und den Kopfzeilen
-		\item \texttt{nogruppe} -- "`Gruppe"' plus Nummer werden nicht ausgegeben
-		\item \texttt{noabgabe} -- das Abgabedatum erschein nicht
-		\item \texttt{nosemester} -- die Semesterangabe wird unterdrückt
-		\item \texttt{nobeschreibung} -- die Angabe der Beschreibung ("`Aufgabenblatt"' bzw. "`Lösungsblatt"') wird unterbunden
-		\item \texttt{noveranstaltung} -- dies schaltet die Ausgabe der Veranstaltungsbezeichnung aus.
-	\end{itemize}
-	\item[Verschiedenes]
-	Per Default wird unter der Veranstaltungsbezeichnung die Zeichenkette "`Lösungsblatt"' ausgegeben, mit der Option \texttt{aufgabenstellung} wird diese zu "`Aufgabenblatt"' angeändert. Primär ist dies also zur Unterscheidung zwischen Aufgaben und Lösungen zu verstehen.
-\end{description}
+\subsubsection{Eingabekodierung}
+
+Zur Wahl stehen \option{utf}, \option{mac}, \option{win} und \option{unix}, die entsprechende Zeichenkodierungen (\textit{utf8}, \textit{applemac}, \textit{latin15} bzw. \textit{latin1}) nachladen. Wird keine dieser Optionen angegeben, erscheint der Hinweis, dass man eine eigene Eingabekodierung angeben sollte. Es gibt hier also keinen Default-Wert.
+
+\subsubsection{Schriften}
+
+Es stehen drei Schrift-Themen zur Auswahl:
+
+\begin{enumerate}
+	\item Das klassische \LaTeX-Erscheinungsbild mit "`Computer Modern"'-Fonts, bzw. der verbesserten Variante "`Latin Modern"'. Hierzu ist keine Option nötig.
+	\item Eine modernere Variante mit Palatino als Brotschrift und Bera Mono als dicktengleiche Schrift für den Quelltext (wie in diesem Dokument). Hierzu gibt es die Option \option{palatino}.
+	\item Als letztes gibt es noch ein "`sparsames"' Thema, das native PDF-Schriften verwendet und so die Dateigröße der PDF signifikant verkleinert. Allerdings sind die mit \option{times} eingestellten Schriften (Helvetica, Times und Courier) nicht sonderlich schön.
+\end{enumerate}
+
+\subsection{Anzeige verschiedener Variablen}
+
+Wie später noch gezeigt wird, lassen sich einige definierte Variablen entfernen. Im einzelnen sind dies:
+
+\begin{itemize}
+	\item \option{tutor-aus} -- unterbindet die Ausgabe des Tutors im Titel und den Kopfzeilen
+	\item \option{gruppe-aus} -- "`Gruppe"' plus Nummer werden nicht ausgegeben
+	\item \option{abgabe-aus} -- das Abgabedatum erschein nicht
+	\item \option{semester-aus} -- die Semesterangabe wird unterdrückt
+	\item \option{beschreibung-aus} -- die Angabe der Beschreibung ("`Aufgabenblatt"' bzw. "`Lösungsblatt"') wird unterbunden
+	\item \option{veranstaltung-aus} -- dies schaltet die Ausgabe der Veranstaltungsbezeichnung aus.
+\end{itemize}
+
+\subsubsection{Verschiedenes}
+
+Per Default wird unter der Veranstaltungsbezeichnung die Zeichenkette "`Lösungsblatt"' ausgegeben, mit der Option \option{aufgabenblatt} wird diese zu "`Aufgabenblatt"' angeändert. Primär ist dies also zur Unterscheidung zwischen Aufgaben und Lösungen zu verstehen.
+
+\newpage
 
 Die bei diesem Dokument aktiven Optionen lauten:
 
 \begin{verbatim}
     \documentclass[
         nicefonts,
-        nogruppe,nosemester,noveranstaltung,notutor,noabgabe,
+        gruppe-aus,semester-aus,veranstaltung-aus,tutor-aus,abgabe-aus,
         utf
     ]{uhb-inf}
 \end{verbatim}
@@ -101,17 +111,14 @@ Die bei diesem Dokument aktiven Optionen lauten:
 
 Die wichtigsten Befehle zum Einrichten des Titels und der Kopfzeilen sind die folgenden:
 
-\def\cs#1{\char`\\#1}
-\def\p#1{$\langle$\textit{#1}$\rangle$}
-\def\pb#1{\{\p{#1}\}}
-
 \begin{itemize}
-	\item \texttt{\cs{veranstaltung}\pb{kurz}\pb{lang}} -- speichert die Bezeichnung der Veranstaltung; \p{lang} sollte soetwas wie "`Praktische Informatik 1"' sein, während \p{kurz} nur "`PI1"' bekommt.
-	\item \texttt{\cs{gruppe}\pb{nummer}\pb{teilnehmer}} -- speichert die Gruppenbezeichnung \p{nummer} sowie die Teilnehmer \p{teilnehmer}. Die Teilnehmer müssen durch \texttt{\cs\cs{}} getrennt sein, z.B. \texttt{\cs{gruppe}\{\$ \cs{alpha}\$\}\{Jane Doe\cs\cs{}Max Mustermann\}}.
-	\item Mit \texttt{\cs{zettel}\pb{nummer}\pb{abgabedatum}} kann die Zettel-Bezeichnung gespeichert werden.
-	\item \texttt{\cs{semester}\pb{bezeichnung}} speichert das Semester, z.B. \texttt{\cs{semester}\{WS 2009/10\}}.
-	\item \texttt{\cs{tutor}\pb{name}} speichert den Namen der Tutorin bzw. des Tutors.
-	\item Zur Anpassung der "`Beschreibung"' (also je nach Option "`Aufgabenblatt"' oder "`Lösungsblatt"') kann \texttt{\cs{beschreibung}\pb{beschreibung}} verwendet werden.
+	\item \option{\cs{veranstaltung}\pb{kurz}\pb{lang}} -- speichert die Bezeichnung der Veranstaltung; \p{lang} sollte soetwas wie "`Praktische Informatik 1"' sein, während \p{kurz} nur "`PI1"' bekommt.
+	\item \option{\cs{gruppe}\pb{nummer}\pb{teilnehmer}} -- speichert die Gruppenbezeichnung \p{nummer} sowie die Teilnehmer \p{teilnehmer}. Die Teilnehmer müssen durch \texttt{\cs\cs{}} getrennt sein, z.B. \texttt{\cs{gruppe}\{\$ \cs{alpha}\$\}\{Jane Doe\cs\cs{}Max Mustermann\}}.
+	\item Mit \option{\cs{zettel}\pb{nummer}\pb{abgabedatum}} kann die Zettel-Bezeichnung gespeichert werden.
+	\item \option{\cs{semester}\pb{bezeichnung}} speichert das Semester, z.B. \texttt{\cs{semester}\{WS 2009/10\}}.
+	\item \option{\cs{tutorin}\pb{name}} oder \option{\cs{tutor}\pb{name}} speichert den Namen der Tutorin bzw. des Tutors.
+	\item Zur Anpassung der "`Beschreibung"' (also je nach Option "`Aufgabenblatt"' oder "`Lösungsblatt"') kann \option{\cs{beschreibung}\pb{beschreibung}} verwendet werden.
+	\item Im Gegensatz zu den Standardklassen wird das Makro \option{\cs{maketitle}} automatisch ausgeführt und kann daher nicht vergessen werden.
 \end{itemize}
 
 Daneben gibt es die Umgebung \texttt{Java}, welche Java-Quellcode nicht nur wiedergibt, sondern auch ein wenig aufhübscht. Prinzipiell handelt es sich dabei um eine \texttt{lstlisting}\footnote{Siehe dazu \texttt{listings}-Paket, \url{http://tug.ctan.org/tex-archive/macros/latex/contrib/listings/}}-Umgebung, eben speziell auf Java zugeschnitten. Dieser Umgebung können verschiedene Optionen mitgegeben werden (siehe dazu die Doku), per Default haben alle Listings diese Optionen aktiv:
@@ -129,6 +136,16 @@ Daneben gibt es die Umgebung \texttt{Java}, welche Java-Quellcode nicht nur wied
 
 Für die Java-Umgebung ist noch zusätzlich \texttt{language=Java} gesetzt.
 
+\subsection{Bezug}
+
+Zu dieser Klasse wurde ein \textit{Google Code}-Projekt mitsamt SVN-Repository angelegt. Das Projekt ist unter \url{http://code.google.com/p/uhb-inf-tex} zu erreichen, auf das Repository kann via
+
+\begin{verbatim}
+    svn checkout http://uhb-inf-tex.googlecode.com/svn/trunk/ ./uhb-inf-tex
+\end{verbatim}
+
+anonym zugegriffen werden. Weiter sind auf der Projektseite ein Wiki mit Installationsanleitungen und weitere Resourcen verlinkt.
+
 \subsection{Minimalbeispiele}
 
 Im Repository finden sich unter \texttt{trunk/doc/minimalbeispiele} zwei kleine Beispiele, einmal ein Pseudo-Aufgabenzettel und einmal eine dazugehörige Abgabe.
@@ -138,10 +155,17 @@ Im Repository finden sich unter \texttt{trunk/doc/minimalbeispiele} zwei kleine 
 Einige Dinge, die noch auf der Todo-Liste stehen sind:
 
 \begin{itemize}
-	\item "`Tutorin"' ermöglichen
-	\item Haskell für PI3-Vorlagen einbinden
-	\item Hinweise für \LaTeX-Anfänger hinzufügen?
-	\item Pakete für verschiedene Kurse anlegen (siehe Beispiel \texttt{PI1.cls})
+	\item Quellcodedokumentation ausbauen
 \end{itemize}
+
+\section{Ein Beispieldokument}
+
+\begin{center}
+	\setlength\fboxsep{0pt}
+	\setlength\fboxrule{.01667em}
+	\fbox{\includegraphics[width=.9\linewidth]{resources/blindtext.pdf}}
+\end{center}
+
+Der Quellcode hierzu findet sich ebenfalls im Repository.
 
 \end{document}

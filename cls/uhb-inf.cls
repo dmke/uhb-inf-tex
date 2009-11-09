@@ -1,5 +1,9 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{uhb-inf}[2009/09/18 v1.2 Uni-Bremen Studiclass]
+\def\uhbinfclassname{uhb-inf}
+\def\uhbinfclassdate{2009/11/09}
+\def\uhbinfclassversion{v1.3}
+\def\uhbinfclassdescription{Uni-Bremen Studiclass}
+\ProvidesClass{\uhbinfclassname}[\uhbinfclassdate\space\uhbinfclassversion\space\uhbinfclassdescription]
 
 % Optionen abfangen.
 \RequirePackage{ifthen}
@@ -67,7 +71,7 @@
 	\RequirePackage[sc]{mathpazo}% Palatino (serif)
 }{
 	\ifopt{times}{
-		\RequirePackage{mathptmx,helvet,courier}% Times, Hevetica und Courier
+		\RequirePackage{mathptmx,helvet,courier}% Times, Helvetica und Courier
 	}{
 		%\ClassWarningNoLine{fb3tex}{Das Verwenden normaler Fonts verhindert das Hervorheben von Quellcodes.}
 		\RequirePackage{lmodern}% optisch mit Computer Modern identisch, aber besser
@@ -93,7 +97,7 @@
 \fancyhf{}
 \fancyhead{
 	\ifnum\value{page}>1%
-		\small\sffamily\strut%
+		\small\strut%
 		\ifopt{veranstaltung-aus}{}{\@veranstaltungkurz}\hfill%
 		\ifopt{semester-aus}{}{\@semester}\hfill
 		\ifopt{gruppe-aus}{}{\textbf{Gruppe~\@gruppe}}\hfill%
@@ -168,22 +172,22 @@
 \renewcommand\thesection{Aufgabe \arabic{section}}
 \renewcommand\section{%
 	\@startsection{section}{1}{0em}%
-	{\baselineskip}{.5\baselineskip}{\Large\bfseries\sffamily}%
+	{\baselineskip}{.5\baselineskip}{\Large\bfseries\rmfamily}%
 }
 \renewcommand\thesubsection{(\arabic{section}.\alph{subsection})}
 \renewcommand\subsection{%
 	\@startsection{subsection}{2}{0em}%
-	{\baselineskip}{.5\baselineskip}{\large\bfseries\sffamily}%
+	{\baselineskip}{.5\baselineskip}{\large\bfseries\rmfamily}%
 }
 \renewcommand\thesubsubsection{(\arabic{section}.\alph{subsection}.\arabic{subsubsection})}
 \renewcommand\subsubsection{%
 	\@startsection{subsubsection}{3}{0em}%
-	{\baselineskip}{.5\baselineskip}{\normalsize\bfseries\sffamily}%
+	{\baselineskip}{.5\baselineskip}{\normalsize\bfseries\rmfamily}%
 }
 
 \renewcommand\maketitle{
 	\begin{minipage}{.6\linewidth}
-		\ifopt{semester-aus}{}{\sffamily\@semester\\}
+		\ifopt{semester-aus}{}{\@semester\\}
 		\ifopt{veranstaltung-aus}{}{
 			\begin{huge}
 				\bfseries \@veranstaltung
@@ -199,11 +203,10 @@
 		\ifopt{abgabe-aus}{}{Abgabe: \@abgabe}
 	\end{minipage}\hfill%
 	\begin{minipage}{.4\linewidth}
-		\sffamily
 		\begin{tabbing}
-			********** \= \kill
-			\ifopt{tutor-aus}{}{\@tutortitle \\}
-			\ifopt{gruppe-aus}{}{\textbf{Gruppe} \> \@gruppe \\[1ex]}
+			********** \= \kill%
+			\ifopt{tutor-aus}{}{\@tutortitle \\}%
+			\ifopt{gruppe-aus}{}{\textbf{Gruppe} \> \@gruppe \\[1ex]}%
 			\@teilnehmer
 		\end{tabbing}
 	\end{minipage}\par

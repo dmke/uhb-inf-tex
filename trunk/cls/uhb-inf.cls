@@ -1,7 +1,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \def\uhbinfclassname{uhb-inf}
 \def\uhbinfclassdate{2009/11/09}
-\def\uhbinfclassversion{v1.3}
+\def\uhbinfclassversion{v1.3b}
 \def\uhbinfclassdescription{Uni-Bremen Studiclass}
 \ProvidesClass{\uhbinfclassname}[\uhbinfclassdate\space\uhbinfclassversion\space\uhbinfclassdescription]
 
@@ -66,12 +66,14 @@
 \RequirePackage{graphicx,calc,amsmath,amssymb,textcomp,verbatim}
 
 % wenn gewuenscht, schoene oder normale Fonts verwenden, ansonsten PDF moeglichst klein halten
+\def\headlinefamily{\rmfamily}
 \ifopt{palatino}{
 	\RequirePackage[scaled]{beramono}% Bera Mono (monospace)
 	\RequirePackage[sc]{mathpazo}% Palatino (serif)
 }{
 	\ifopt{times}{
 		\RequirePackage{mathptmx,helvet,courier}% Times, Helvetica und Courier
+		\gdef\headlinefamily{\sffamily}
 	}{
 		%\ClassWarningNoLine{fb3tex}{Das Verwenden normaler Fonts verhindert das Hervorheben von Quellcodes.}
 		\RequirePackage{lmodern}% optisch mit Computer Modern identisch, aber besser
@@ -172,17 +174,17 @@
 \renewcommand\thesection{Aufgabe \arabic{section}}
 \renewcommand\section{%
 	\@startsection{section}{1}{0em}%
-	{\baselineskip}{.5\baselineskip}{\Large\bfseries\rmfamily}%
+	{\baselineskip}{.5\baselineskip}{\Large\bfseries\headlinefamily}%
 }
 \renewcommand\thesubsection{(\arabic{section}.\alph{subsection})}
 \renewcommand\subsection{%
 	\@startsection{subsection}{2}{0em}%
-	{\baselineskip}{.5\baselineskip}{\large\bfseries\rmfamily}%
+	{\baselineskip}{.5\baselineskip}{\large\bfseries\headlinefamily}%
 }
 \renewcommand\thesubsubsection{(\arabic{section}.\alph{subsection}.\arabic{subsubsection})}
 \renewcommand\subsubsection{%
 	\@startsection{subsubsection}{3}{0em}%
-	{\baselineskip}{.5\baselineskip}{\normalsize\bfseries\rmfamily}%
+	{\baselineskip}{.5\baselineskip}{\normalsize\bfseries\headlinefamily}%
 }
 
 \renewcommand\maketitle{
@@ -190,7 +192,7 @@
 		\ifopt{semester-aus}{}{\@semester\\}
 		\ifopt{veranstaltung-aus}{}{
 			\begin{huge}
-				\bfseries \@veranstaltung
+				\bfseries\headlinefamily \@veranstaltung
 				\vskip.5\baselineskip
 			\end{huge}
 		}

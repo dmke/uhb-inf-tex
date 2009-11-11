@@ -22,8 +22,8 @@
 	morestring=[b]"
 }[keywords,comments,strings]
 
-\lstnewenvironment{code}{%
-	\lstset{name=\thismodule,firstnumber=auto}%
+\lstnewenvironment{code}[2][]{%
+	\lstset{name=\thismodule,firstnumber=auto,#1}%
 	\csname\@lst @SetFirstNumber\endcsname%
 }{%
 	\csname\@lst @SaveFirstNumber\endcsname%
